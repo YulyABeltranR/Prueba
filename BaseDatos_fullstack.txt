@@ -1,0 +1,34 @@
+/**CREACION BASE DE DATOS*/
+CREATE DATABASE bd_fullstack;
+/**USAR BASE DE DATOS*/
+USE DATABASE bd_fullstack;
+/**CREACION DE TABLAS  */
+
+CREATE TABLE usuarios (
+ID_usu INT (50) NOT NULL UNIQUE,
+Usuario VARCHAR(50) NOT NULL,
+Contraseña VARCHAR(50) NOT NULL,
+Nombre VARCHAR(50) NOT NULL,
+Apellido VARCHAR(50) NOT NULL,
+Telefono INT (10) NOT NULL ,
+Id_Rol INT (50) ,
+Fecha_creacion DATE NOT NULL,
+Usuario_creacion VARCHAR(50) ,
+Fecha_actualizacion DATE NOT NULL,
+Usuario_actualizacion VARCHAR(50),
+Estado ENUM ('A','I') NOT NULL ,
+CONSTRAINT PK_usuarios PRIMARY KEY (ID_usu)
+);
+
+CREATE TABLE roles (
+    Id_rol INT (50) UNIQUE,
+    nombre_rol VARCHAR(50) NOT NULL,
+    FOREIGN KEY (Id_rol) REFERENCES usuarios(Id_Rol)
+);
+
+/**Insercion tabla usuarios**/
+INSERT INTO usuarios VALUES (5672681,'usuarioA','Elysia546','Elysia',' Omullally',3102004567,123,'2022-07-12','admin creado','2022-07-12','admin actualizado','A');
+
+/**Insercion tabla roles**/
+INSERT INTO roles VALUES (123,'Administrador');
+INSERT INTO roles VALUES (80,'Usuario');
